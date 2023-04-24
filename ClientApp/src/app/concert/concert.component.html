@@ -1,0 +1,107 @@
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Add icon library -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  <h1 class="h1"> Ongoing and Upcoming Concerts</h1>
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <table class="table  table-striped table-bordered table-hover">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Name</th>
+              <th>Composer</th>
+              <th>Date</th>
+              <th>Duration</th>
+              <th>Location</th>
+              <th style="width: 15%;" class="text-center">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let concert of concertData">
+              <td>
+                <div *ngIf="concert.action === 'add'">
+                  <input type="text" [(ngModel)]="concert.id" class="form-control" />
+                </div>
+                <div *ngIf="!concert.action">
+                  {{ concert.id }}
+                </div>
+              </td>
+              <td>
+                <div *ngIf="concert.action === 'add' || concert.action === 'edit' ">
+                  <input type="text" [(ngModel)]="concert.name" class="form-control" />
+                </div>
+                <div *ngIf="!concert.action">
+                  {{ concert.name }}
+                </div>
+              </td>
+              <td>
+                <div *ngIf="concert.action === 'add' || concert.action === 'edit' ">
+                  <input type="text" [(ngModel)]="concert.composer" class="form-control" />
+                </div>
+                <div *ngIf="!concert.action">
+                  {{ concert.composer }}
+                </div>
+              </td>
+              <td>
+                <div *ngIf="concert.action === 'add' || concert.action === 'edit' ">
+                  <input type="text" [(ngModel)]="concert.date" class="form-control" />
+                </div>
+                <div *ngIf="!concert.action">
+                  {{ concert.date }}
+                </div>
+              </td>
+              <td>
+                <div *ngIf="concert.action === 'add' || concert.action === 'edit' ">
+                  <input type="text" [(ngModel)]="concert.duration" class="form-control" />
+                </div>
+                <div *ngIf="!concert.action">
+                  {{ concert.duration }}
+                </div>
+              </td>
+              <td>
+                <div *ngIf="concert.action === 'add' || concert.action === 'edit' ">
+                  <input type="text" [(ngModel)]="concert.location" class="form-control" />
+                </div>
+                <div *ngIf="!concert.action">
+                  {{ concert.location }}
+                </div>
+              </td>
+              <td style="width: 15%;" class="text-center">
+                <div *ngIf="concert.action === 'edit' ">
+                  <button class="btn btn-sm btn-success m-1" (click)="onUpdate(concert)">
+                    <i class="fa fa-save"></i>
+                  </button>
+                  <button class="btn btn-sm btn-danger" (click)="onCancel()">
+                    <i class="fa fa-close"></i>
+                  </button>
+                </div>
+                <div *ngIf="concert.action === 'add' ">
+                  <button class="btn btn-sm btn-success m-1" (click)="onAdd(concert)">
+                    <i class="fa fa-save"></i>
+                  </button>
+                  <button class="btn btn-sm btn-danger" (click)="onCancel()">
+                    <i class="fa fa-close"></i>
+                  </button>
+                </div>
+                <div *ngIf="!concert.action">
+                  <button class="btn btn-sm btn-success m-1" (click)="onEdit(concert)">
+                    <i class="fa fa-edit"></i>
+                  </button>
+                  <button class="btn btn-sm btn-danger" (click)="onDelete(concert)">
+                    <i class="fa fa-trash"></i>
+                  </button>
+                </div>
+            </tr>
+          </tbody>
+        </table>
+        <button class="btn btn-sm btn-success" (click)="onAddEmptyRow()">
+          Add New Concert
+        </button>
+      </div>
+    </div>
+  </div>
+</body>

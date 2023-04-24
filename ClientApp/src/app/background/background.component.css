@@ -1,0 +1,15 @@
+#sect1 {
+  height: 800px;
+  color: #fff;
+  background-image: url('./landing-image.png');
+  background-size: 100%;
+  background-size: cover;
+}
+
+h1 {
+  text-align: center;
+}
+
+h2 {
+  font-style: italic;
+}
